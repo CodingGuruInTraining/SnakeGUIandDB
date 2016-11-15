@@ -50,21 +50,10 @@ public class Main {
             return false;
         }
 
-        try (Connection conn = DriverManager.getConnection(DB_CONNECTION_URL + DB_NAME, USER, PASSWORD)) {
-            connection = conn;
-
-        } catch (SQLException sqle) {
-            System.out.println("Can't connect to database. " +
-                    "\nIs MySQL running? " +
-                    "\nHave you created the database? " +
-                    "\nVerify username and password. " +
-                    "\nHave you granted the right permissions to your user?");
-            sqle.printStackTrace();
-            return false;
-        }
-
-
         try {
+
+            Connection connection = DriverManager.getConnection(DB_CONNECTION_URL + DB_NAME, USER, PASSWORD);
+
 
             // Create a Statement.
             // The first argument allows us to move both forward and backwards through the ResultSet generated from this Statement.
